@@ -43,6 +43,37 @@ class JudgmentController extends ApiController
         return $result;
     }
 
+    /**
+     * @return array
+     */
+    /**
+     * @api {post} /judgment/request Уголвоный анализ
+     *
+     * @apiName judgementRequest
+     * @apiGroup judgement
+     *
+     * @apiVersion 0.1.0
+     *
+     * @apiParam {Number} age Возраст
+     * @apiParam {Number} article24_id
+     * @apiParam {String} article_id
+     * @apiParam {String} crime_date
+     * @apiParam {Number} gender
+     * @apiParam {Number} heavy
+     * @apiParam {Number} soft
+     *
+     * @apiSuccess {Number} status        Status: 1=Success. 0=Error
+     * @apiSuccess {String} error_message Error text
+     * @apiSuccess {String} result        Result text
+     *
+     * @apiSuccessExample {json} Success-Response:
+     *     HTTP/1.1 200 OK
+     *     {
+     *       "status": 1,
+     *       "error_message": "",
+     *       "result": "Some text..."
+     *     }
+     */
     public function actionRequest()
     {
         $result = [];

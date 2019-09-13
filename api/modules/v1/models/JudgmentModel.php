@@ -120,7 +120,7 @@ class JudgmentModel extends \yii\base\Model
         $crime_date = $this->crime_date->format('Y.m.d');
 
         $sql = <<<EOL
-CALL srok(
+CALL srok_v2(
     '$this->article_id', 
     '$this->article24_id', 
     '$this->gender', 
@@ -129,19 +129,45 @@ CALL srok(
     $this->heavy, 
     '$crime_date', 
     @outPar1_res, 
-    @outPar2_text
+    @outPar2_text,
+    @outPar3_text,
+    @outPar4_text,
+    @outPar5_text,
+    @outPar6_text,
+    @outPar7_text,
+    @outPar8_text,
 )
 EOL;
 
         $command = Yii::$app->db->createCommand($sql);
         $command->execute();
 
-        $sql = 'SELECT @outPar1_res as status, @outPar2_text as txt';
+        $sql = 'SELECT @outPar1_res as status, 
+                    @outPar2_text as txt, 
+                    @outPar3_text as txt2,
+                    @outPar4_text as txt3,
+                    @outPar5_text as txt4,
+                    @outPar6_text as txt5,
+                    @outPar7_text as txt6,
+                    @outPar8_text as txt7';
         $command = Yii::$app->db->createCommand($sql);
         $result = $command->queryOne();
         if($result) {
             if ($result['status'] == 1) {
-                return $result['txt'];
+                $result_text = '';
+                $result_array = [
+                    'text_1'=>$result['txt'],
+                    'text_2'=>$result['tx2'],
+                    'text_3'=>$result['tx3'],
+                    'text_4'=>$result['tx4'],
+                    'text_5'=>$result['tx5'],
+                    'text_6'=>$result['tx6'],
+                    'text_7'=>$result['tx7'],
+                ];
+                foreach ($result_array as $key => $val){
+                    $result_text .= $val."<br>";
+                }
+                return $result_text;
             }
         }else
             $this->setError('Результат не найден');
