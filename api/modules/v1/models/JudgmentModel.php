@@ -135,7 +135,7 @@ CALL srok_v2(
     @outPar5_text,
     @outPar6_text,
     @outPar7_text,
-    @outPar8_text,
+    @outPar8_text
 )
 EOL;
 
