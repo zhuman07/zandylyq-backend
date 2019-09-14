@@ -157,12 +157,12 @@ EOL;
                 $result_text = '';
                 $result_array = [
                     'text_1'=>$result['txt'],
-                    'text_2'=>$result['tx2'],
-                    'text_3'=>$result['tx3'],
-                    'text_4'=>$result['tx4'],
-                    'text_5'=>$result['tx5'],
-                    'text_6'=>$result['tx6'],
-                    'text_7'=>$result['tx7'],
+                    'text_2'=>$result['txt2'],
+                    'text_3'=>$result['txt3'],
+                    'text_4'=>$result['txt4'],
+                    'text_5'=>$result['txt5'],
+                    'text_6'=>$result['txt6'],
+                    'text_7'=>$result['txt7'],
                 ];
                 foreach ($result_array as $key => $val){
                     $result_text .= $val."<br>";
