@@ -90,7 +90,7 @@ class JudgmentController extends ApiController
      *     }
      *
      * @apiErrorExample {json} Error-Response:
-     *     HTTP/1.1 400 Bad Request
+     *     HTTP/1.1 200 OK
      *     {
      *       "status": 0,
      *       "result": {
@@ -141,10 +141,6 @@ class JudgmentController extends ApiController
         catch(\Exception $e)
         {
             $result['error_message'] = 'Произошла ошибка при обработке';
-        }
-
-        if(!empty($result['error_message'])){
-            Yii::$app->getResponse()->setStatusCode(400);
         }
 
         return $result;

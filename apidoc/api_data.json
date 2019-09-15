@@ -148,7 +148,7 @@
       "examples": [
         {
           "title": "Error-Response:",
-          "content": "HTTP/1.1 400 Bad Request\n{\n  \"status\": 0,\n  \"result\": {\n     \"text_1\": \"\",\n     \"text_2\": \"\",\n     \"text_3\": \"\",\n     \"text_4\": \"\",\n     \"text_5\": \"\",\n     \"text_6\": \"\",\n     \"text_7\": \"\"\n  },\n  \"error_message\": \"Пустое значение article_id. Пустое значение article24. Пустое значение gender. Пустое значение age. Ошибка значения soft. Ошибка значение heavy. Пустое значение crime_date\"\n}",
+          "content": "HTTP/1.1 200 OK\n{\n  \"status\": 0,\n  \"result\": {\n     \"text_1\": \"\",\n     \"text_2\": \"\",\n     \"text_3\": \"\",\n     \"text_4\": \"\",\n     \"text_5\": \"\",\n     \"text_6\": \"\",\n     \"text_7\": \"\"\n  },\n  \"error_message\": \"Пустое значение article_id. Пустое значение article24. Пустое значение gender. Пустое значение age. Ошибка значения soft. Ошибка значение heavy. Пустое значение crime_date\"\n}",
           "type": "json"
         }
       ]
