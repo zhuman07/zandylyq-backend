@@ -64,21 +64,60 @@ class JudgmentController extends ApiController
      *
      * @apiSuccess {Number} status        Status: 1=Success. 0=Error
      * @apiSuccess {String} error_message Error text
-     * @apiSuccess {String} result        Result text
+     * @apiSuccess {Object} result        Result object
+     * @apiSuccess {String} result.text_1 Result param 1
+     * @apiSuccess {String} result.text_2 Result param 2
+     * @apiSuccess {String} result.text_3 Result param 3
+     * @apiSuccess {String} result.text_4 Result param 4
+     * @apiSuccess {String} result.text_5 Result param 5
+     * @apiSuccess {String} result.text_6 Result param 6
+     * @apiSuccess {String} result.text_7 Result param 7
      *
      * @apiSuccessExample {json} Success-Response:
      *     HTTP/1.1 200 OK
      *     {
      *       "status": 1,
      *       "error_message": "",
-     *       "result": "Some text..."
+     *       "result": {
+     *          "text_1": "some text...",
+     *          "text_2": "some text...",
+     *          "text_3": "some text...",
+     *          "text_4": "some text...",
+     *          "text_5": "some text...",
+     *          "text_6": "some text...",
+     *          "text_7": "some text..."
+     *       }
+     *     }
+     *
+     * @apiErrorExample {json} Error-Response:
+     *     HTTP/1.1 400 Bad Request
+     *     {
+     *       "status": 0,
+     *       "result": {
+     *          "text_1": "",
+     *          "text_2": "",
+     *          "text_3": "",
+     *          "text_4": "",
+     *          "text_5": "",
+     *          "text_6": "",
+     *          "text_7": ""
+     *       },
+     *       "error_message": "Пустое значение article_id. Пустое значение article24. Пустое значение gender. Пустое значение age. Ошибка значения soft. Ошибка значение heavy. Пустое значение crime_date"
      *     }
      */
     public function actionRequest()
     {
         $result = [];
         $result['status'] = 0;
-        $result['result'] = '';
+        $result['result'] = [
+            "text_1" => "",
+            "text_2" => "",
+            "text_3" => "",
+            "text_4" => "",
+            "text_5" => "",
+            "text_6" => "",
+            "text_7" => "",
+        ];
         $result['error_message'] = '';
         try
         {
@@ -102,6 +141,10 @@ class JudgmentController extends ApiController
         catch(\Exception $e)
         {
             $result['error_message'] = 'Произошла ошибка при обработке';
+        }
+
+        if(!empty($result['error_message'])){
+            Yii::$app->response->statusCode = 400;
         }
 
         return $result;

@@ -89,20 +89,20 @@ class JudgmentModel extends \yii\base\Model
     }
 
     /**
-     * @return bool
+     * @return bool|array
      */
     public function getResult()
     {
         try {
-            $judment_text = $this->findJudment();
-
-            if ($judment_text === false)
+            $judment_array = $this->findJudment();
+            if ($judment_array === false){
                 throw new \Exception('Не удалось вычислить ответ');
-
-            if (!$this->saveRequest($judment_text))
+            }
+            $judment_text = self::getArrayAsString($judment_array);
+            if (!$this->saveRequest($judment_text)){
                 throw new \Exception('Не удалось сохранить результат запроса');
-
-            return $judment_text;
+            }
+            return $judment_array;
 
         }catch (\Exception $e){
             $this->setError($e->getMessage());
@@ -112,7 +112,20 @@ class JudgmentModel extends \yii\base\Model
     }
 
     /**
-     * @return bool
+     * @param array $array
+     * @return string
+     */
+    protected static function getArrayAsString($array)
+    {
+        $text = '';
+        foreach ($array as $key => $val){
+            $text .= $val."<br>";
+        }
+        return $text;
+    }
+
+    /**
+     * @return bool|array
      * @throws \yii\db\Exception
      */
     protected function findJudment()
@@ -154,7 +167,6 @@ EOL;
         $result = $command->queryOne();
         if($result) {
             if ($result['status'] == 1) {
-                $result_text = '';
                 $result_array = [
                     'text_1'=>$result['txt'],
                     'text_2'=>$result['txt2'],
@@ -164,10 +176,7 @@ EOL;
                     'text_6'=>$result['txt6'],
                     'text_7'=>$result['txt7'],
                 ];
-                foreach ($result_array as $key => $val){
-                    $result_text .= $val."<br>";
-                }
-                return $result_text;
+                return $result_array;
             }
         }else
             $this->setError('Результат не найден');
