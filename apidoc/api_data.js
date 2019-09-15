@@ -2,7 +2,7 @@ define({ "api": [
   {
     "type": "post",
     "url": "/judgment/request",
-    "title": "Уголвоный анализ",
+    "title": "Уголовный анализ",
     "name": "judgementRequest",
     "group": "judgement",
     "version": "0.1.0",

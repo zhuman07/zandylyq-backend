@@ -47,7 +47,7 @@ class JudgmentController extends ApiController
      * @return array
      */
     /**
-     * @api {post} /judgment/request Уголвоный анализ
+     * @api {post} /judgment/request Уголовный анализ
      *
      * @apiName judgementRequest
      * @apiGroup judgement
