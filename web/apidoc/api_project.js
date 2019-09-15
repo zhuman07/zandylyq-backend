@@ -1,4 +1,4 @@
-{
+define({
   "name": "api_zandylyq",
   "version": "0.1.0",
   "description": "Documentation for api.zandylyq.kz",
@@ -9,8 +9,8 @@
   "apidoc": "0.3.0",
   "generator": {
     "name": "apidoc",
-    "time": "2019-09-15T17:28:48.397Z",
+    "time": "2019-09-15T17:33:20.567Z",
     "url": "http://apidocjs.com",
     "version": "0.17.7"
   }
-}
+});
