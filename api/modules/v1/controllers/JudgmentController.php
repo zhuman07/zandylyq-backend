@@ -144,7 +144,7 @@ class JudgmentController extends ApiController
         }
 
         if(!empty($result['error_message'])){
-            Yii::$app->response->statusCode = 400;
+            Yii::$app->getResponse()->setStatusCode(400);
         }
 
         return $result;
